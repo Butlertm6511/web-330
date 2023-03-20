@@ -1,0 +1,92 @@
+/* 
+    Title: site.css
+    Author: Professor Krasso
+    Date: 03/15/2023
+    Modified: TiaNiecia Mosley Butler
+    Description: Shows how to create CSS variable for website
+*/
+
+
+
+    
+
+
+/* Assignment 1.3 Styling Styling Requirement */
+
+#icon-mode:hover{
+    cursor: pointer;
+}
+
+.container{
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+
+}
+
+#icon-text{
+    padding-left: 10px;
+}
+
+.pull-right {
+    float: right; 
+}
+
+/* Assignment on Styling Styling from WEB 330 , HTML,CSS JavaScript requirements */
+
+
+.assign-container{
+    padding: 10px;
+}
+
+.assign-content{
+    width: 600px;
+    margin: 3% auto 0;
+}
+
+.assign-results-text{
+    text-align: center;
+    font-size: 28px;
+}
+
+/* Assignment on Styling Styling from WEB 330 , HTML,CSS JavaScript requirements */
+
+.app-header{
+    text-align: center;
+    font-weight: 400;
+    border: none;
+    color: inherit;
+    background-color: inherit;
+
+}
+
+
+
+.return-home{
+    color: #473674;
+    text-decoration: none;
+
+}
+
+.return-home:hover{
+    background-color: #D6A800;
+    color: #4f3674;
+
+}
+
+.return-home:visited{
+    color: #3c275a;
+}
+
+.form{
+    display: inline-grid;
+    grid-template-columns: auto;
+}
+
+.form-field{
+    padding: 20px;
+}
+
+.full-width{
+    width: 100%;
+}
