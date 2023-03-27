@@ -1,0 +1,14 @@
+
+.btn{
+    background-color:var(--h1-background-color);
+}
+
+.card{
+    width: 600px;
+    margin: 3% auto 0; 
+}
+
+.card-content assign-results-text{
+    text-align: left;
+}
+

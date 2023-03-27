@@ -1,0 +1,258 @@
+<!-- 
+    Title:Palindrome App
+    Author: Professor Krasso
+    Date:3/27/2023
+    Modifed: TiaNiecia Mosley
+    Description: function used to create a palindrome app. Take input of word then split the array and reverse string to see if they return the same result. 
+                 It is not a palindrome message display to say word enter is no a palindrome. If it return true it displays the word entered is a 
+                 palindrome. The app also displays date, original word, word reversed, and the length of the word.
+
+ -->
+<!-- 
+    Title:JavaScript String split()
+    Author: w3schools
+    Date:3/27/2023
+    Modifed: TiaNiecia Mosley
+    Description: Method to split string into an array of substrings.
+                 https://www.w3schools.com/jsref/jsref_split.asp
+
+ -->
+<!-- 
+    Title:JavaScript Array reverse()
+    Author: w3schools
+    Date:3/27/2023
+    Modifed: TiaNiecia Mosley
+    Description: Method to reverse oder in elements an array by overwriting the original.
+                 JavaScript Array reverse()
+                 https://www.w3schools.com/jsref/jsref_reverse.asp
+
+ -->
+ <!-- 
+    Title:JavaScript Array join()
+    Author: w3schools
+    Date:3/27/2023
+    Modifed: TiaNiecia Mosley
+    Description: Method to return an array as a string.
+                 https://www.w3schools.com/jsref/jsref_join.asp
+
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" type="text/css" href="../../web-330/site.css">
+    <link rel="stylesheet" type="text/css" href="../../web-213/../web-330/theme.css">
+    <link rel="stylesheet" href="mosleyButler-palindrome.css">
+   
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+   
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <script src="../../web-330/theme.js"></script>
+    <title>WEB 330-Enterprise JavaScript II</title>
+</head>
+<body class="light-theme">
+
+    <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" 
+            style="font-size: 28px;"><span id="icon-text"></span></i> 
+
+    <div class="assign-container">
+        <h1 class="app-header">Welcome to the Palindrome App!</h1>
+        <div class="assign-content">
+            <div class="card">
+                <div class="card-title">
+                    Palindrome Checker
+                </div>
+                <div class="card-content">
+                    <div class="form">
+                        <div class="form-field">
+                            <label for="txtPhrase">Phrase value</label>
+                            <input type="text" class="input" id="txtPhrase" name="txtPhrase">
+                        </div>
+
+                        <div class="form-field">
+                            <button class="btn btn-primary full-width" id="btnCheckPhrase">Submit</button>
+
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+            <br>
+                <a href="../index.html">Return</a>
+        </div>
+
+    </div>
+
+   
+
+    <div class="assign-container">
+        
+        <div class="assign-content">
+            <div class="card">
+                <div class="card-title">
+                    Palindrome Results
+                </div>
+                <div class="card-content assign-results-header" id="assign-results-header">
+                    
+                </div>
+                <div id="assign-results" class="assign-results-text">
+
+                </div>
+                
+
+                
+            </div>
+        </div>
+
+    </div>
+
+   
+
+   
+
+    <script>
+
+        setDefaultTheme();
+
+        // Toggle function for light and dark theme.
+
+        
+
+        function toggleMode(x)
+        {
+            let colorTheme = document.body.classList;
+            let iconMode = x.classList;
+
+
+        
+            // Changes the body class to light-theme, and updates the preference to dark-theme in the browsers local storage.
+            if (colorTheme.value === "light-theme")
+            {
+                localStorage.clear();
+                localStorage.setItem("mode", "dark-theme");
+                localStorage.setItem("iconMode", "fa-toggle-on");
+                localStorage.setItem("iconText", "Dark Mode");
+            }
+
+            // Changes the body class to dark-theme, and updates the preference to light-theme in the browsers local storage.
+            else
+            {
+                localStorage.clear();
+                localStorage.setItem("mode", "light-theme");
+                localStorage.setItem("iconMode", "fa-toggle-off");
+                localStorage.setItem("iconText", "Light Mode");
+            }
+
+            // Applies the current selection to the HTML page elements.
+            colorTheme.value = localStorage.getItem("mode");
+            iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
+            document.getElementById("icon-text").innerHTML = localStorage.getItem("icon-text");
+
+        }
+
+        
+
+        // Gets the current date.
+        function getTodaysDate(){
+            const currentDate = new Date();
+            return currentDate.toLocaleDateString();
+        };
+
+
+        // Function that gets the word from the input and then gets length of the word entered.
+
+        function getLength(txtPhrase){
+            let wordLen = document.getElementById("txtPhrase").value;
+            return wordLen.length;         
+        }
+        
+        
+        
+        // Function that splits the word in to a array of charters and then reverse the charters and the join them to make a reverse word.
+       
+        function reverse(txtPhrase){
+        
+           let wordArray = txtPhrase.split("");
+            wordArray.reverse();
+            let reversWord = wordArray.join("");
+            return reversWord;   
+
+        };
+
+
+
+        // Function that compare reverse word to original word and return true if the match or false if they don't match.
+
+        function Palindrome(txtPhrase){
+
+            let reverseWord = reverse(txtPhrase);
+
+            if (txtPhrase === reverse(txtPhrase)){
+                return true;
+            }
+
+            else{
+                return false;
+            }
+ 
+        } 
+        
+
+         
+
+     
+
+        /* Function that is started once the button is clicked and will out put current date, word, length of word,
+           the reversed word, and  tell id the word is a Palindrome. Then it will output the results and tell if the word
+           is a Palindrome*/
+            
+        
+        
+        document.getElementById("btnCheckPhrase").onclick = function(){
+
+            // Get the value from the input field.
+            let txtPhrase = document.getElementById("txtPhrase").value;
+
+            // assigns the output of the if else statement to the assign-result div. 
+            let assignResults = document.getElementById("assign-results");
+             
+            // calls in the function to be use to create output for card and results
+            let today = getTodaysDate();
+            let len = getLength(txtPhrase);
+            let reversePhrase = reverse(txtPhrase);
+            let isPalindrome = Palindrome(txtPhrase);
+            let myWord;
+            
+            // Assigns header to one string value of the outputs the results for date, original word, reverse word, and length for the word entered.
+            let header = `Date:${today}<br> Original Phrase: ${txtPhrase}<br> Reversed Phrase: ${reversePhrase}<br> Phrase Length: ${len}<br>`;
+        
+            // Places the header result to the html  assign-results-header.
+            document.getElementById("assign-results-header").innerHTML = header;
+            
+            // Check to see if word entered is the same frontward and backwards;
+            if(isPalindrome){
+                myWord = `${txtPhrase} <u>is</u> a palindrome`;
+                
+            }
+
+            else{
+                myWord = `${txtPhrase} <b><u>is not</u></b>  palindrome`;
+               
+            }
+
+            // Output the string value of if/else statement into html assign-results.
+            assignResults.innerHTML = myWord;
+    };
+        
+            
+
+
+    </script>
+    
+</body>
+</html>

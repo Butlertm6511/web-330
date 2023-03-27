@@ -37,6 +37,8 @@
 
 .assign-container{
     padding: 10px;
+    width: 600px;
+    margin: 3% auto 0;
 }
 
 .assign-content{
@@ -81,12 +83,15 @@
 .form{
     display: inline-grid;
     grid-template-columns: auto;
+    
 }
 
 .form-field{
     padding: 20px;
+    
 }
 
 .full-width{
     width: 100%;
+    
 }
