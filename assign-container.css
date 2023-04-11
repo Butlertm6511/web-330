@@ -1,0 +1,19 @@
+.assign-container{
+    padding: 10px;
+}
+
+.assign-content{
+    width: 600px;
+    margin: 3% auto 0;
+}
+
+.assign-results-text{
+    text-align: center;
+    font-size: 28px;
+}
+
+.card{
+    width: 300px;
+    text-align: left;
+    margin: 3% auto 0; 
+}

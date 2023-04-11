@@ -1,0 +1,262 @@
+<!-- 
+    Title:Restaurant App
+    Author: Professor Krasso
+    Date:3/27/2023
+    Modifed: TiaNiecia Mosley
+    Description: function used to create a Restaurant App. Takes from input checkboxes  then adds there value to a array that added together and returns the sum of 
+                 items added from a menu list.The total is add to the Order summary section.
+-->
+
+<!-- 
+    Title:HTML<input type ="checkbox">
+    Author: w3schools
+    Date:3/30/2023
+    Modifed: TiaNiecia Mosley
+    Description: Show how to use input with th type of check bocks
+                https://www.w3schools.com/tags/att_input_type_checkbox.asp
+-->
+
+<!-- 
+    Title:Javascript Modules
+    Author: w3schools
+    Date:3/30/2023
+    Modifed: TiaNiecia Mosley
+    Description: Show how to break code into different files. and use the import and export keywords
+                https://www.w3schools.com/js/js_modules.asp
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" type="text/css" href="../../web-330/site.css">
+    <link rel="stylesheet" type="text/css" href="../../web-213/../web-330/theme.css">
+    <link rel="stylesheet" href="../../web-330/assign-container.css">
+    <link rel="stylesheet" href="../../web-330/flex-layout.css">
+    <link rel="stylesheet" href="resturant.css">
+   
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+   
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+
+    <script type="module" src="index.js"></script>
+    <script type="module" src="product.js"></script>
+    <script type="module" src="main-course.js"></script>
+    <script type="module" src="index.js"></script>
+    <script type="module" src="dessert.js"></script>
+    <script type="module" src="bill.js"></script>
+    <script type="module" src="beverage.js"></script> 
+
+   
+</head>
+<body class="light-theme">
+
+    <div class= "assign-container">
+        <div class= "assign-content">
+            <h1 class="app-header">Welcome to the Restaurant App!</h1>
+            <div class="card-title">Restaurant Menu</div>
+            <div class= "container">
+                <div class= "row">
+                    <div class= "col-6">
+                        <div class= "card">
+                            <div class="card-title">Beverages</div>
+                            
+                            <!-- Tells onclick where to look for the id of check inputs in the Beverage section.  -->
+                            <div class="card-content" id="beverages">
+
+                                <!--Checkbox input that contain the value of each item to be added when checked  -->
+                                <input type="checkbox" id="soda" name="" value="3.30">
+                                <label for="soda">soda ($3.30)</label>
+                                <br>
+                               
+                                <input type="checkbox" id="sweetTea" name="" value="3.30">
+                                <label for="sweetTea">Sweet Tea($3.30)</label>
+                                <br>
+                                
+                                <input type="checkbox" id="icedCoffee" name="" value="2.49">
+                                <label for="icedCoffee">Iced Coffee($2.49)</label>
+                                <br>
+                                
+                                <input type="checkbox" id="bottledWater" name="" value="2.15">
+                                <label for="bottledWater">Bottled Water($2.15)</label>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class= "col-6">
+                        <div class= "card">
+                            <div class="card-title">Appetizers</div>
+
+                            <!-- Tells onclick where to look for the id of check inputs in the appetizers section.  -->
+                            <div class="card-content" id="appetizers">
+
+                                <!--Checkbox input that contain the value of each item to be added when checked  -->
+                                <input type="checkbox" id="nachos" name="" value="6.60">
+                                <label for="nachos">Nachos ($6.60)</label>
+                                <br>
+                                <input type="checkbox" id="chipsAndSalsa" name="" value="5.50">
+                                <label for="chipsAndsalsa">Chips and Salsa ($5.50)</label>
+                                <br>
+                                <input type="checkbox" id="PretzelWithCheese" name="" value="8.80">
+                                <label for="PretzelWithCheese">Pretzel with Cheese ($8.80)</label>
+                                <br>
+                                <input type="checkbox" id="friedPickles" name="" value="8.25">
+                                <label for="friedPickles">Fried Pickles ($8.25)</label>
+                            </div>
+            
+                        </div>
+                    </div>
+                    <div class= "col-6">
+                        <div class= "card">
+                            <div class="card-title">Main Course</div>
+
+                            <!-- Tells onclick where to look for the id of check inputs in the mainCourse section. -->
+                            <div class="card-content" id="mainCourse">
+
+                                <!--Checkbox input that contain the value of each item to be added when checked -->
+                                <input type="checkbox" id="streetTacos" name="" value="9.70">
+                                <label for="streetTacos">Street Tacos ($9.70)</label>
+                                <br>
+                                <input type="checkbox" id="bonelessWings" name="" value="12.80">
+                                <label for="bonelessWings">Boneless Wings ($12.80)</label>
+                                <br>
+                                <input type="checkbox" id="cheeseBurgeFries" name="" value="12.65">
+                                <label for="cheeseBurgeFries">Cheese Burger with Fries ($12.65)</label>
+                                <br>
+                                <input type="checkbox" id="chickenWrapSalad" name="" value="6.65">
+                                <label for="chickenWrapSalad">Chicken Wrap with Salad ($6.65)</label>
+                                <br>
+                                <br>
+                            </div>   
+                        </div>
+                    </div>
+                   
+                    <div class= "col-6">
+                        <div class= "card">
+                            <div class="card-title">Deserts</div>
+
+                            <!-- Tells onclick where to look for the id of check inputs in the mainCourse section.-->
+                            <div class="card-content" id="deserts">
+                                
+                                <!--Checkbox input that contain the value of each item to be added when checked  -->
+                                <input type="checkbox" id="iceCream" name="" value="4.30">
+                                <label for="iceCream">Ice Cream ($4.30)</label>
+                                <br>
+                                <input type="checkbox" id="chocolateCake" name="" value="5.40">
+                                <label for="chocolateCake">Chocolate Cake ($5.40)</label>
+                                <br>
+                                <input type="checkbox" id="applePie" name="" value="3.80">
+                                <label for="applePie">Apple Pie ($3.80)</label>
+                               
+                                <button class="btn btn-primary full-width" id="btnOrder">Place Order</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <br>
+                    <a href="../index.html">Return</a>
+
+                </div>
+
+            </div>
+
+
+            <div class= "container">
+                    <div class= "col-6">
+                        <div class= "card" style="width: 600px;">
+                            <div class="card-title">Order Summary</div>
+                            <div class="card-content" >
+                                <!-- Id where results will be displayed -->
+                                <div id="order-total" class="assign-results-text">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+  
+
+   
+<!-- Script set to type=module to allow module to be imported -->
+<script type="module">
+
+
+// Import statement to pulling the Bill, Beverage, Appetizer, MainCourse, Dessert modules so the can be used outside their file.
+import {Bill, Beverage, Appetizer, MainCourse, Dessert} from "./index.js"
+
+
+    /* Onclick button that runs the functions once user has selected item and click Place Order. Will add all the item values that was checked 
+     display them in the  Order Summary section.*/
+    document.getElementById("btnOrder").onclick =function(){
+
+
+        let myBill = new Bill();
+
+        const beveragesEl = document.getElementById("beverages");
+        const beveragesChoice = beveragesEl.getElementsByTagName("input");
+    
+        const appetizersEl = document.getElementById("appetizers");
+        const appetizersChoice = appetizersEl.getElementsByTagName("input");
+
+        const mainCourseEl = document.getElementById("mainCourse");
+        const mainCourseChoice = mainCourseEl.getElementsByTagName("input");   
+
+        const desertsEl = document.getElementById("deserts");
+        const desertsChoice = desertsEl.getElementsByTagName("input");
+
+        
+    // Gets the value by looking at id from for that card and loops over to see which items were checked. If they are check the value is added
+    for(let beverage of beveragesChoice ){
+        if(beverage.checked)
+        {
+            myBill.addBeverage(new Beverage(beverage.id, parseFloat(beverage.value)));
+        }
+    }
+
+    for(let appetizer of appetizersChoice){
+        if(appetizer.checked)
+        {
+            myBill.addAppetizer(new Appetizer(appetizer.id, parseFloat(appetizer.value)));
+        }
+    }
+
+    for(let mainCourse of mainCourseChoice){
+        if(mainCourse.checked)
+        {
+            myBill.addMainCourse(new MainCourse(mainCourse.id, parseFloat(mainCourse.value)));
+        }
+    }
+
+    for(let dessert of desertsChoice){
+        if(dessert.checked)
+        {
+            myBill.addDessert(new Dessert(dessert.id, parseFloat(dessert.value)));
+        }
+    }
+
+    // Place the total of the myBill into the Order Summary using the getTotal function. Then a .toFixed(2) is applied to get two decimal places.
+    document.getElementById('order-total').innerHTML= `Your order total is ${myBill.getTotal().toFixed(2)}` 
+ };
+
+
+    
+    
+        
+       
+
+    
+</script>
+</body>
+</html>

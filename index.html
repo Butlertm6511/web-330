@@ -32,6 +32,7 @@
         <!-- Onclick with icon and text that changes between light and dark mode. Embedded CSS style to chanf font size to 28px -->
          <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" 
             style="font-size: 28px;"><span id="icon-text"></span></i> 
+            <br>
       
         
 
@@ -43,11 +44,11 @@
                     <h3>Weekly Assignments</h3>
                         <ul>
                             <li>
-                                <a href="week-2/mosleyButler-palindrome.html">
-                                    Assignment 2.2
-                                </a>
+                                <a href="week-2/mosleyButler-palindrome.html">Assignment 2.2</a>
                             </li>
-                            <li>Assignment 3.2</li>
+                            <li>
+                                <a href="week-3/restaurant.html">Assignment 3.2</a>
+                            </li>
                             <li>Assignment 4.2</li>
                             <li>Assignment 5.2</li>
                             <li>Assignment 6.2</li>
@@ -119,7 +120,9 @@
             // Applies the current selection to the HTML page elements.
             colorTheme.value = localStorage.getItem("mode");
             iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
-            document.getElementById("icon-text").innerHTML = localStorage.getItem("icon-text");
+            document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+
+           
 
         }
 

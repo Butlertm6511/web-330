@@ -58,7 +58,7 @@
 
     <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" 
             style="font-size: 28px;"><span id="icon-text"></span></i> 
-
+            <br>
     <div class="assign-container">
         <h1 class="app-header">Welcome to the Palindrome App!</h1>
         <div class="assign-content">
@@ -151,7 +151,7 @@
             // Applies the current selection to the HTML page elements.
             colorTheme.value = localStorage.getItem("mode");
             iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
-            document.getElementById("icon-text").innerHTML = localStorage.getItem("icon-text");
+            document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
 
         }
 
