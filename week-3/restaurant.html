@@ -1,28 +1,29 @@
 <!-- 
-    Title:Restaurant App
+    Title:Calorie App
     Author: Professor Krasso
     Date:3/27/2023
-    Modifed: TiaNiecia Mosley
-    Description: function used to create a Restaurant App. Takes from input checkboxes  then adds there value to a array that added together and returns the sum of 
-                 items added from a menu list.The total is add to the Order summary section.
+    Modified: TiaNiecia Mosley
+    Description: function used to create a Calorie App. Takes users input from input field and compares the value pair. It it is a match 
+                 then adds there value to a table. Table is populated using static function and filter to instance through array of food to find instance.
+                 
 -->
 
 <!-- 
-    Title:HTML<input type ="checkbox">
-    Author: w3schools
-    Date:3/30/2023
-    Modifed: TiaNiecia Mosley
-    Description: Show how to use input with th type of check bocks
-                https://www.w3schools.com/tags/att_input_type_checkbox.asp
+    Title:Static initialization blocks
+    Author: Mdn web docs
+    Date:3/27/2023
+    Modified: TiaNiecia Mosley
+    Description: Static block allow stament to be evaluated during initialization. This allow you to state multiple  fields from a string.
+                https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Static_initialization_blocks
 -->
 
 <!-- 
-    Title:Javascript Modules
-    Author: w3schools
-    Date:3/30/2023
-    Modifed: TiaNiecia Mosley
-    Description: Show how to break code into different files. and use the import and export keywords
-                https://www.w3schools.com/js/js_modules.asp
+    Title:Array.prototype.filter()
+    Author: Mdn web docs
+    Date:3/27/2023
+    Modified: TiaNiecia Mosley
+    Description: Show how to filter down to just elements from a given array from test if test is not passed a empty array will be returned.
+                https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 -->
 
 <!DOCTYPE html>
@@ -40,7 +41,9 @@
    
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-
+    <script type="module">
+        import {setDefaultTheme} from '../../web-330/theme.js';
+    </script>
     <script type="module" src="index.js"></script>
     <script type="module" src="product.js"></script>
     <script type="module" src="main-course.js"></script>
@@ -52,6 +55,10 @@
    
 </head>
 <body class="light-theme">
+
+    <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" 
+            style="font-size: 28px;"><span id="icon-text"></span></i> 
+            <br>
 
     <div class= "assign-container">
         <div class= "assign-content">
@@ -186,13 +193,57 @@
 
     </div>
 
-  
+    <script>
+    // Toggle function for light and dark theme.
 
+    setDefaultTheme();
+    
+    
+    
+    function toggleMode(x)
+    {
+       
+        let colorTheme = document.body.classList;
+        let iconMode = x.classList;
+    
+    
+        // Changes the body class to light-theme, and updates the preference to dark-theme in the browsers local storage.
+        if (colorTheme.value === "light-theme")
+        {
+            localStorage.clear();
+            localStorage.setItem("mode", "dark-theme");
+            localStorage.setItem("iconMode", "fa-toggle-on");
+            localStorage.setItem("iconText", "Dark Mode");
+        }
+    
+        // Changes the body class to dark-theme, and updates the preference to light-theme in the browsers local storage.
+        else
+        {
+            localStorage.clear();
+            localStorage.setItem("mode", "light-theme");
+            localStorage.setItem("iconMode", "fa-toggle-off");
+            localStorage.setItem("iconText", "Light Mode");
+        }
+    
+        // Applies the current selection to the HTML page elements.
+        colorTheme.value = localStorage.getItem("mode");
+        iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
+        document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+    
+    }
+    
+    
+    
+    </script>
+  
+ 
    
 <!-- Script set to type=module to allow module to be imported -->
 <script type="module">
 
+setDefaultTheme();
 
+import{setDefaultTheme} from '../../web-330/theme.js';
 // Import statement to pulling the Bill, Beverage, Appetizer, MainCourse, Dessert modules so the can be used outside their file.
 import {Bill, Beverage, Appetizer, MainCourse, Dessert} from "./index.js"
 
@@ -249,14 +300,7 @@ import {Bill, Beverage, Appetizer, MainCourse, Dessert} from "./index.js"
     // Place the total of the myBill into the Order Summary using the getTotal function. Then a .toFixed(2) is applied to get two decimal places.
     document.getElementById('order-total').innerHTML= `Your order total is ${myBill.getTotal().toFixed(2)}` 
  };
-
-
-    
-    
-        
-       
-
-    
+ 
 </script>
 </body>
 </html>

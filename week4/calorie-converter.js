@@ -1,17 +1,17 @@
-import FoodModel from './food-model';
+import FoodModel from './food-model.js';
 
 class CalorieConverter{
-    static list = [
-      new FoodModel(1007, Egg, 78),
-      new FoodModel(1008, Apple, 95),
-      new FoodModel(1009, Hamburger, 354),
-      new FoodModel(1010, Fries, 400),
-      new FoodModel(1011, Banana, 105),
-      new FoodModel(1012, soda, 150)
+    static data = [
+      {id: 1007, name: 'Egg', calories: 78},
+      {id: 1008, name: 'Apple', calories: 95},
+      {id: 1009, name: 'Hamburger', calories: 354},
+      {id: 1010, name: 'Fries', calories: 400},
+      {id: 1011, name: 'Banana', calories: 105},
+      {id: 1012, name: 'soda', calories: 150}
     ];
 
-static find(name){
-    return CalorieConverter.list.filter(item=> item.name === name);
+static find(searchFood){
+    return this.data.filter(food => food.name.toLowerCase().includes(searchFood));
     }
 }
 

@@ -3,48 +3,196 @@
 <head>
     
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="../web-330/theme.css">
-    <link rel="stylesheet" type="text/css" href="../web-330/site.css">
+    <link rel="stylesheet" type="text/css" href="../../web-330/site.css">
+    <link rel="stylesheet" type="text/css" href="../../web-330/theme.css">
+    <link rel="stylesheet" href="mosleyButler-calorie.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">        
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    <script src="food-model.js"></script>
-    <script src="calorie-converter.js"></script>
+
+    <script type="module">
+        import {setDefaultTheme} from '../../web-330/theme.js';
+        import CalorieConverter from './calorie-converter.js';
+    </script>
 
 </head>
-<body>
-    <div class= "assign-container">
-        <div class= "assign-content">
-            <h1 class="app-header">Welcome to the Calorie App</h1>
-            <div class="card-title">Search Form</div>
-            <div class= "container">
-                <div class= "row">
-                    <div class= "col-6">
-                        <div class= "card">
-                            <div class="card-title">Beverages</div>
-                            <div class="card-content" id="beverages">
-                                
-                                <input type="checkbox" id="soda" name="" value="$3.30">
-                                <label for="Beverages">soda ($3.30)</label>
-                                <br>
-                                
-                                <input type="checkbox" id="sweetTea" name="" value="$3.30">
-                                <label for="sweetTea">Sweet Tea($3.30)</label>
-                                <br>
-                                
-                                <input type="checkbox" id="icedCoffee" name="" value="$2.49">
-                                <label for="icedCoffee">Iced Coffee($2.49)</label>
-                                <br>
-                                
-                                <input type="checkbox" id="bottledWater" name="" value="$2.15">
-                                <label for="bottledWater">Bottled Water($2.15)</label>
-                               
-                            </div>
+<body class="light-theme">
+
+    <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" 
+            style="font-size: 28px;"><span id="icon-text"></span></i> 
+            <br>
+    <div class="assign-container">
+        <h1 class="app-header">Welcome to the Calorie App!</h1>
+        <div class="assign-content">
+            <div class="card">
+                <div class="card-title">
+                    Calorie Search Form
+                </div>
+                <div class="card-content">
+                    <div class="form">
+                        <div class="form-field">
+                            <label for="txtPhrase">Enter a food item</label>
+
+                            <!-- Input field where user input value to be compare with function  -->
+                            <input type="text" class="input" id="txtFoodItem" name="txtFoodItem">
+
+                            <span id="foodList" style="float:left"></span>
+                        </div>
+                        
+
+                        <div class="form-field">
+                            <!--  Button with onclick that will invoke the function to run when user hits search or hit Enter -->
+                            <button class="btn btn-primary full-width" id="btnSearch">Search</button>
+
                         </div>
                     </div>
 
                 </div>
+                
+            </div>
+            <br>
+                <!-- link to return to landing page. -->
+                <a href="../index.html">Return</a>
+        </div>
+
+    </div>
+    <div class="assign-container">
+        
+        <div class="assign-content">
+            <div class="card">
+                <div class="card-title">
+                    Search Results
+                </div>
+                <!-- start of table -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="card-content" >Name</th>
+                            <th class="card-content" >Calories</th>
+                        </tr>
+                    </thead>
+                    <!-- This is where table will be created and populate with matching results -->
+                    <tbody class="card-content" id="searchResults">
+                      
+                    </tbody>
+                </table>
+
+                
+
+                    
+        
+            </div>
+        </div>        
+
+<script >
+        
+
+
+
+// Toggle function for light and dark theme.
+
+setDefaultTheme();
+
+
+
+function toggleMode(x)
+{
+   
+    let colorTheme = document.body.classList;
+    let iconMode = x.classList;
+
+
+    // Changes the body class to light-theme, and updates the preference to dark-theme in the browsers local storage.
+    if (colorTheme.value === "light-theme")
+    {
+        localStorage.clear();
+        localStorage.setItem("mode", "dark-theme");
+        localStorage.setItem("iconMode", "fa-toggle-on");
+        localStorage.setItem("iconText", "Dark Mode");
+    }
+
+    // Changes the body class to dark-theme, and updates the preference to light-theme in the browsers local storage.
+    else
+    {
+        localStorage.clear();
+        localStorage.setItem("mode", "light-theme");
+        localStorage.setItem("iconMode", "fa-toggle-off");
+        localStorage.setItem("iconText", "Light Mode");
+    }
+
+    // Applies the current selection to the HTML page elements.
+    colorTheme.value = localStorage.getItem("mode");
+    iconMode.value = `fa ${localStorage.getItem("iconMode")} pull-right`;
+    document.getElementById("icon-text").innerHTML = localStorage.getItem("iconText");
+
+}
+
+
+
+</script>
+
+<!-- imports the files so that the functions and classes can be used -->
+<script type="module">
+
+import{setDefaultTheme} from '../../web-330/theme.js';
+import CalorieConverter from './calorie-converter.js';
+
+setDefaultTheme();
+
+// Gets the value that the user inputs.
+let textFoodItemEl = document.getElementById('txtFoodItem');
+
+// onclick function that run function by getting user input when the button is clicked
+document.getElementById('btnSearch').onclick= function() {
+    // Gets the food entered in the input field
+    let txtFoodItem= textFoodItemEl.value;
+
+    // Uses the calorieCoverter and the .find to see if item is in the list, and if it there outputs it to the table. It make everthing lower case.
+    let foods = CalorieConverter.find(txtFoodItem.toLowerCase());
+
+    // Sting to hold the array
+    let tableData = '';
+
+ 
+    // Iterates through the data and build the rows
+    for(const food of foods){
+
+    tableData +=`
+
+            <tr>
+                <td>${food.name}</td>
+                <td>${food.calories}</td>
+            </tr>
+        `;
+    }
+// closes the tag for the table
+    tableData +=`
+
+        </tbody>
+    </table>
+    `;
     
-    
+
+//  Uses If "searchResults" to bind the results
+document.getElementById("searchResults").innerHTML += tableData;
+
+};
+
+// Adds and event lister so that when Enter is hit it invokes the onclick function
+
+textFoodItemEl.addEventListener('keyup',(event)=> {
+    if(event.key === 'Enter'){
+    document.getElementById("btnSearch").click();
+}
+});
+
+// foodList = CalorieConverter();
+
+let foodListData = `<i>Egg, Apple, Hamburger, Fries, Banana, Soda</i>`
+
+// Outputs the list of food items
+document.getElementById("foodList").innerHTML = foodListData; 
+
+    </script>
 </body>
 </html>

@@ -1,3 +1,36 @@
+#foodList{
+    float: right;
+    color: #df546a;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+
+
+.btn{
+    background-color:var(--h1-background-color);
+}
+
+.card{
+    width: 600px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin: 3% auto 0;
+    
+}
+
+.table {
+    width: 100px;
+    margin: 3 auto;
+    /* padding: 30px; */
+    text-align: center;
+ 
+}   
+
+.table, th, td, tr{
+    border: 1px solid black;
+}  
+    
 
 
 

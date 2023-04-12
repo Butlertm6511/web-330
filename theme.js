@@ -2,7 +2,7 @@
 
 
 
-function setDefaultTheme(){
+export function setDefaultTheme(){
             
     const theme = localStorage.getItem("mode") || "light-theme";
     const iconMode = localStorage.getItem("iconMode") || "fa-toggle-off";
@@ -16,7 +16,7 @@ function setDefaultTheme(){
 /*  Set the body of the HTML to the selected theme. If it hasn't be selected, then it will 
     be light*/
     
-function setSelectedTheme(){
+export function setSelectedTheme(){
     document.body.classList.value = localStorage.getItem("mode") || "light-theme";
 }
 
