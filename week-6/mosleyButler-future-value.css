@@ -1,0 +1,63 @@
+/* styling to  cards to adjust size*/
+.assign-content{
+    
+    width: 600px;
+    margin: 3% auto 0;
+
+}
+
+/*added to button to make purple  */
+.btn{
+    background-color:var(--h1-background-color);
+}
+
+
+.card-content{
+    display: inline-block;
+    font-size: 16px;
+    
+    
+}
+
+/* added to fix the size of cards */
+.card{
+    width:600px;
+    margin: 3% auto 0; 
+    
+}
+
+.danger{
+    float: le;
+    color: #df546a;
+    padding: 10px
+    font-size: 12px;
+    letter-spacing: 2px;
+   
+}
+
+.form-label{
+    display: inline-block;
+    padding-top: 1rem;
+}
+
+/* styling to  cards to adjust size*/
+.assign-content{
+    
+    width: 500px;
+    margin: 3% auto 0;
+
+}
+
+/*added to button to make purple  */
+.btn{
+    background-color:var(--h1-background-color);
+}
+
+
+.card-content{
+    font-size: 16px;
+    
+    
+}
+ 
+

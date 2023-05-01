@@ -26,6 +26,7 @@ class Header extends HTMLElement{
                     <li>
                         <a href= "about-me.html ">about</a>
                     </li>
+                    
                 </ul>    
         </div>
         `;

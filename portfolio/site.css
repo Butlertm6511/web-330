@@ -2,6 +2,7 @@ body{
     color: 000;
     font-family: 'Oswald', Verdana, Arial, sans-serif;
     margin: 0;
+    align-content: center;
 }
 
 #banner{
@@ -9,7 +10,8 @@ body{
     padding-top: 10px;
     text-align: center;
     height: 100px;
-    background-color: #3c275a;
+    width: 100%;
+    background-color: #1a5cb7;
     color: #fff;
     border-bottom: 1px solid #d6a800;
 }
@@ -19,7 +21,7 @@ body{
     padding: 0;
     height: 30px;
     list-style-type: none;
-    border-bottom: 1px solid #473674;
+    border-bottom: 1px solid #9d91bf;
 }
 
 #nav-list li{
@@ -59,7 +61,7 @@ body{
     border-top: 1px solid #d6a800;
     padding: 15px 0 15px 0;
     font-style: italic;
-    background-color: #3c275a;
+    background-color: #0f3d67;
     color: #fff;
     position: absolute;
     bottom: 0;
@@ -84,18 +86,21 @@ body{
 /* no theme */
 .assign-container{
     padding: 10px;
+    width:100%;
+    display: grid;
 }
 
 .assign-container{
-    width: 600px;
+    width: 1200px;
+    align-items: center;
 }
 
 .app-header{
    text-align: center;
    font-weight: 400;
    border: none;
-   color: inherit;
-   background-color: #12434a; 
+   color: #fff;
+   background-color: #0e1843; 
 }
 
 return-home-hover{
@@ -176,15 +181,29 @@ input{
 }
 
 
+
+
 .hero{
-    /* position:relative; */
+    position:relative;
+    height: 100%;
     width: 100%;
     height: auto;
     overflow: hidden;
+    background-image: url("images/landing.jpg");
 }
 
-.hero img{
+.welcome{
     width:100%;
-    height: 1020px;
-    object-fit:cover;
+
+    height: 100%;
+
+}
+.hero img{
+
+    height: (900px);
+    width: 100%;
+    object-fit: cover;
+
+    
+
 }

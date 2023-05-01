@@ -1,0 +1,227 @@
+
+<!-- 
+    Title:WhataBookApp
+    Author: Professor Krasso
+    Date:4/26/2023
+    Modified: TiaNiecia Mosley
+    Description: Uses a number of class build a finance calculator. Has inputs for monthly payments, interest rate, and number of years, and 
+    calculates the future value of an investment. It validates the users input, and will display a error message when it dosen't validate.
+-->
+
+<!-- 
+    Title:flex-layout.ss
+    Author:Professor Krasso
+    Date:4/26/2023
+    Modified: TiaNiecia Mosley
+    Description: use to apply bootstraps and angular syntax to code style css
+-->
+
+<!-- 
+    Title:Intl.NumberFormat
+    Author: Mdn web docs
+    Date:4/26/2023
+    Modified: TiaNiecia Mosley
+    Description: enables language-sensitive number formatting. 
+-->
+
+<!-- 
+    Title:Math.pow()
+    Author: Mdn web docs
+    Date:4/26/2023
+    Modified: TiaNiecia Mosley
+    Description: Shows how to uae fetch API interface to make HTTP request to the server.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="../../web-330/site.css">
+    <link rel="stylesheet" type="text/css" href="../../web-330/theme.css">
+    <link rel="stylesheet" href="mosleyButler-future-value.css">       
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body class="light-theme">
+
+    <i onclick="toggleMode(this)" id="icon-mode" class="fa fa-toggle-off pull-right" 
+            style="font-size: 28px;"><span id="icon-text"></span></i> 
+            <br>
+    <div class="assign-container">
+        <h1 class="app-header">Welcome to the Future Values App!</h1>
+
+    <div class="assign-content">
+    <div class="card">
+        <div class="card-title">
+            Future Value Calculator
+        </div>
+
+        <div class="row danger" id="errorLog">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            
+
+        </div>
+        
+
+        <div class="card-content">
+            <div class="form">
+        
+                <div  class="form-label">
+                    <label for="txtMonthlyPayment">monthly Payment</label>
+                    <input type="text" id="txtMonthlyPayment">
+                </div>
+                  
+                <div class="form-field form-label">    
+                    <label for="txtYearlyRate">Interest Rate </label>
+                    <input type="text" id="txtYearlyRate">
+                    <br>
+                    <br>
+                 </div>
+
+                 <i class="danger">Enter 11% as11.1:</i> 
+
+                 <!-- drop down bock that use the number of years chosen -->
+                 <div class="form-field form-label">  
+                    <label for="listNumOfYears">Number of Years</label>
+                    <select name="listNumOfYears" id="listNumOfYears">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div> 
+                <br>
+                </div>
+                <div class="form-field">
+                    <!--  Button with onclick that will invoke the function to run when user hits search or hit Enter -->
+                    <button class="btn btn-primary full-width" id="btnCalculate">Calculate</button>
+                </div>
+             
+        </div>
+        
+    </div>
+   
+</div>
+<br>
+        <!-- link to return to landing page. -->
+        <a href="../index.html">Return</a>
+</div>
+<div class="assign-container">
+
+<div class="assign-content">
+    <div class="card">
+                 
+        <div class="card-title">Calculation as of<span id="today"></span></div>
+
+        <div class="card-content" id="futureValue">
+        
+
+            </div>
+        </div>
+
+    </div>      
+</div>
+        
+
+            
+    </div>
+</div>
+</div> 
+
+
+ <script type="module">
+
+
+let errorLog =[];
+// import statements for the class FinanceCalculator and Validator 
+
+import { FinanceCalculator } from "./finance-calculator.js";
+
+import { FieldValidator } from "./validator.js";
+
+
+// Set today's date
+const todayEl = document.getElementById('today');
+todayEl.innerHTML = new Date().toLocaleDateString('en-US');
+
+// Register onclick event for btnCalculate
+document.getElementById('btnCalculate').onclick = function () {
+  const monthlyPayment = document.getElementById('txtMonthlyPayment').value;
+  const rate = document.getElementById('txtYearlyRate').value;
+  const years = document.getElementById('listNumOfYears').value;
+  const errorLogEl = document.getElementById('errorLog');
+
+// Creates a instance for monthlyPayment input
+  const monthlyPaymentValidator = new FieldValidator('Monthly Payment', monthlyPayment);
+
+// Adds monthlyPaymentValidator to required, required float, and min float fields
+  monthlyPaymentValidator.addRequiredField();
+  monthlyPaymentValidator.addRequiredFloatField();
+  monthlyPaymentValidator.addFloatMinField(100);
+
+
+// Makes new FieldValidator for rate input
+  const rateValidator = new FieldValidator('Interest Rate', rate);
+
+// add rateValidator to require, required float, and maxium field validation
+  rateValidator.addRequiredField();
+  rateValidator.addRequiredFloatField();
+  rateValidator.addFloatMaxField(100);
+
+  const errorLog = [];
+
+
+//   Check if monthly input is valid
+  if (!monthlyPaymentValidator.validate()) {
+    for (const message of monthlyPaymentValidator.messages) {
+      errorLog.push(message);
+    }
+  }
+
+//   check if rate input is valid
+  if (!rateValidator.validate()) {
+    for (const message of rateValidator.messages) {
+      errorLog.push(message);
+    }
+  }
+
+//   If they are both valid the value will be shown. Else it displays a error message
+  if (monthlyPaymentValidator.validate() && rateValidator.validate()) {
+  errorLogEl.innerHTML = '';
+  const futureValue = FinanceCalculator.calculateFutureValue(monthlyPayment, rate, years);
+  document.getElementById('futureValue').innerHTML = futureValue;
+} else {
+  let errorLogList = '<ul>';
+  for (let i = 0; i < errorLog.length; i++) {
+    errorLogList += `<li>${errorLog[i]}</li>`;
+  }
+  errorLogList += '</ul>';
+  errorLogEl.innerHTML = errorLogList;
+};
+};
+</script>
+</body>
+</html>
