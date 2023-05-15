@@ -1,7 +1,252 @@
-#projects-container{
-    background-color: aqua;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    grid-gap: 20px;
+*{
+    padding: 0;
+    margin: 0;
 }
+
+body{
+   
+    font-family:'Source Sans Pro', 'Courier New', Courier, monospace;
+}
+
+p{
+    font-family:'Source Sans Pro', 'Courier New', Courier, monospace;
+    font-size: 25px;
+    font-weight: 400;
+    width: 600px;
+}
+.indent{
+    text-indent:2em
+}
+
+h1{
+    color: #333;
+    font-family: 'Playfair';
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+
+h3{
+    color: fff;
+    font-size: 3rem;
+    font-family: 'Playfair';
+    font-weight: 400;
+    text-align: center;
+}
+
+h4{
+    color: #fff;
+    font-family: 'Source Sans Pro';
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-align: left;
+}
+/* navigation bar */
+.nav{
+    display:flex;
+    grid-template-rows: repeat(7,auto);
+    gap: 1rem;
+    background-color: #272525;
+    padding:1rem 0;
+    justify-content: space-evenly;
+    text-decoration: none;
+}
+
+.nav a{
+    font-family: 'Source San Pro';
+    font-size: 2rem;
+    color: white;
+
+    
+}
+
+
+.nav a:hover{
+    background-color: #8dd6da;;
+    color: #202222;
+    padding: 6px;
+    transition: 0.3s;
+}
+
+a{
+   text-decoration: none;
+}
+
+a:hover{
+
+   background-color: #298c91; 
+
+}
+.btnNav{
+    background-color: #8dd6da;;
+    opacity: .8;
+    color: #090909;
+    padding: 5px;
+    border-radius: 8%;
+    text-align: justify;
+}
+
+
+h1{
+    font-family: 'Playfair';
+    color: #171717;
+    font-size: 4rem;
+}
+
+
+.buttonReg{
+    background-color: #5ababf;
+    border: none;
+    color: aliceblue;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+.buttonReg:hover{
+    background-color: #297f82;
+    color: #fff;
+}
+
+
+.container-about{
+    gap: 65px; 
+    background-color: #f5f8f8;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+ 
+.sideSide{
+   padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 2%;
+    margin-right: 20px;
+    width: 600px;
+    height: auto;
+    box-shadow:0 4px 6px rgba(0,0,0, 0.1);   
+}  
+
+
+
+.about-me, h2{
+    font-family: 'Playfair';
+    text-align:center;
+}
+
+.row{
+    display:flex;
+    grid-template-columns: repeat(3,auto);
+    gap: 1rem;
+    padding: 2rem;
+    margin: 30px;
+}
+
+.column{
+    
+    width: 25%;
+    height: 400px;
+    padding: 5%;
+    margin: 30px;
+    border-radius: 100%;
+    background-color: #2b6669;
+    box-shadow:0 4px 6px rgba(0,0,0, 0.1);
+    border-radius:8px;
+    overflow:hidden;
+    transition:box-shadow 0.3 ease;
+
+}
+
+
+
+.card{
+    
+    width: 400px;
+    height: 250px;
+    background-color: #fff;
+    box-shadow:0 4px 6px rgba(0,0,0, 0.1);
+    border-radius:8px;
+    overflow:hidden;
+    transition:box-shadow 0.3 ease;
+}
+
+
+.card:hover{
+    box-shadow:0 8px 12px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width:100%;
+    height: auto;
+}
+
+
+
+
+
+
+
+.footer{
+    display:grid;
+    grid-template-rows: repeat(4,auto);
+    gap: 1rem;
+    background-color: #272525;
+    padding:1rem 0;
+    justify-content: space-evenly;
+    text-decoration: none;
+}
+
+.footer a{
+    font-family: 'Source San Pro';
+    font-size: 2rem;
+    color: white;
+
+    
+}
+
+
+.footer a:hover{
+    background-color: #8dd6da;;
+    color: #202222;
+    padding: 6px;
+    transition: 0.3s;
+}
+
+
+hr{
+    color: #545353;
+}
+.Projects-container{
+    padding: 2%;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    justify-content: space-evenly;
+    align-content: center;
+  
+}
+
+
+
+.card h2{
+    background-color: #8dd6da;
+    padding: 30px
+}
+
+
+.card-title{
+    font-size:x-large;
+    font-family:'Playfair';
+    background-color: #6bacb0;
+    padding: 10px;
+}
+

@@ -5,28 +5,27 @@ class Header extends HTMLElement{
 
     connectedCallback(){
         this.innerHTML = `
-        <div id=banner>
-            <div id= "nav-container">
-                <ul id= "nav-list">
+        <div id="banner">
+            <div id= "nav-container" >
+                <ul id= "nav-list" class="nav">
                     <li>
-                        <a href= "index.html ">Home</a>
+                        <a href= "mosleyButler-portfolio.html ">Home</a>
                     </li>
                     <li>
-                        <a href= "projects.html ">Projects</a>
-                    </li>
-                    <li>
-                        <a href= "#">Database Diagrams</a>
-                    </li>
-                    <li>
-                        <a href= "#">API</a>
+                        <a href= "about-me.html">About Me</a>
                     </li>
                     <li>
                         <a href= "resume.html ">Resume</a>
                     </li>
                     <li>
-                        <a href= "about-me.html ">about</a>
+                        <a href= "projects.html ">Projects</a>
                     </li>
-                    
+                    <li>
+                        <a href= "database.html">Database Diagrams</a>
+                    </li>
+                    <li>
+                        <a href= "api.html">API</a>
+                    </li>  
                 </ul>    
         </div>
         `;
